@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <h1 id="title">Personalize TODO List Application</h1>
+
+    <div class="parent" id="login_box">
+        <input class="parent_button" type="email" id="email" placeholder="abc@gmail.com" required>
+        <input class="parent_button" type="password" id="password" required placeholder="enter password">
+        <button class="parent_button" type="button" onclick="sumbit()">Login</button>
+    </div>
+
+    <div id="todo">
+
+        <div class="todo_block">
+
+            <span>
+                <button class="btn" id="input_bar_button" onclick="show_input_bar()">Add TODO</button>
+                <button class="btn" id="search_bar_button" onclick="show_search_bar()">Search TODO</button>
+            </span>
+
+            <span id="input_bar">
+                <input type="text" placeholder="todo text" id="input_bar_tod_text" maxlength="30">
+                <input type="date" placeholder="Due date" id="due_date">
+
+                <select id="input_bar_catagory">
+                    <option value="" disabled selected> Select catagory</option>
+                    <option value="Home Work "> Home Work </option>
+                    <option value="Exams"> Exams </option>
+                    <option value="Project"> Project </option>
+                    <option value="Activities"> Activities</option>
+                    <option value="Personal"> Personal</option>
+
+                </select>
+                <button class="save_btn" onclick="add_todo()">Save</button>
+
+            </span>
+
+            <!--  search bar span start here -->
+            <span id="search_bar">
+
+                <!-- <select id="search_type">
+                    <option value="" disabled selected>Select Search Type</option>
+                    <option value="email">email</option>
+                    <option value="due__date"> date </option>
+                    <option value="catagoryy">catagory </option>
+
+                </select>
+
+                <button id="submit_btn" onclick="select_search_option()"> Sumbit</button> -->
+
+                <!-- <input type="email" placeholder="search with email" id="search_bar_id">
+                <input type="date" placeholder="search with due date" id="search_bar_due_date">-->
+                
+                <select id="search_bar_catagory"> 
+                    <option value="" disabled selected placeholder="Select catagory"> Select catagory</option>
+                    <option value="Home Work "> Home Work </option>
+                    <option value="Exams"> Exams </option>
+                    <option value="Project"> Project </option>
+                    <option value="Activities"> Activities</option>
+                    <option value="Personal"> Personal</option>
+                </select>
+
+                <button class="search_btn" onclick="search_by_catagory()">Search</button>
+
+            </span>
+
+        </div>
+
+
+
+        <ul id="todo_display_list">Todo display list</ul>
+
+        <button class="logout_btn" type="button" onclick="logout()">Logout</button>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
