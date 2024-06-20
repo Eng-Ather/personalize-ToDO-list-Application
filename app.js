@@ -1,26 +1,16 @@
+var title = document.getElementById("title"); //main heading wher current user id display
 
-var title = document.getElementById("title");//main heading wher current user id display
-
-var login_box = document.getElementById("login_box");//home page, disappear when user get login
+var login_box = document.getElementById("login_box"); //home page, disappear when user get login
 
 var email = document.getElementById("email"); //getting email from index.html page
 var password = document.getElementById("password"); //getting pasword from index.html page
 
 var todo = document.getElementById("todo"); //todo block, dispaly after login
 
-var input_bar = document.getElementById("input_bar") //initally hidden it display when click on add todo button
-var search_bar = document.getElementById("search_bar")//initally hidden it display when click on search todo button
+var input_bar = document.getElementById("input_bar"); //initally hidden it display when click on add todo button
+var search_bar = document.getElementById("search_bar"); //initally hidden it display when click on search todo button
 
-// var search_bar_button = document.getElementById('search_bar_button')
-// var search_type = document.getElementById('search_type')
-// var search_bar_id = document.getElementById('search_bar_id')
-// var search_bar_due_date = document.getElementById('search_bar_due_date')
- var search_bar_catagory = document.getElementById('search_bar_catagory')
-// var submit_btn = document.getElementById('submit_btn')
- var search_btn = document.getElementsByClassName('search_btn')
-
-
-
+var search_btn = document.getElementsByClassName("search_btn");
 
 
 checkuserlogin(); //jub first time website search hoge yea page refresh kia jay ga to yea check kry ga or jis ke id login hoeve hoge us ke detail display krda ga
@@ -34,9 +24,8 @@ function sumbit() {
     return alert("enter email and pasword");
   } else {
     localStorage.setItem("eml", email.value); //input type email sa email id la ga os usko localac storage ma save krva da ga
-  
-  //agar app sirf Authentic people ko login allow krna cahty han in ka account pehly sa bna hoa ha to yeaha us ka kam hoga
-  
+
+    //agar app sirf Authentic people ko login allow krna cahty han in ka account pehly sa bna hoa ha to yeaha us ka kam hoga
   }
   checkuserlogin(); // jub user login ho jay ga to yea login form ko huta da ga or todo wala page show kr da ga
   displaytodolist(); //jub user login ho or pehly sa todo list ma koe data save ha to display ho jay ga
@@ -49,7 +38,7 @@ function checkuserlogin() {
   var login_user = localStorage.getItem("eml");
   if (login_user) {
     todo.style.display = "block";
-    title.innerText = login_user; //display current user id in title box 
+    title.innerText = login_user; //display current user id in title box
     login_box.style.display = "none";
     email.value = "";
     password.value = "";
@@ -71,29 +60,30 @@ function checkuserlogin() {
 function logout() {
   localStorage.removeItem("eml");
   checkuserlogin();
+
+  search_type_dropdown.value = "";
+  search_bar_input_feild.style.display = "none";
+  searching_element_catagory.value="";
+  searching_element_catagory.style.display = "none";
+  search_bar.style.display = "none";
+
+
   title.innerText = " Simple Notes App Using Local Storage "; //display title on top
 }
 
-/*****************************************(Login page work ends here)*****************************************/ 
+/*****************************************(Login page work ends here)*****************************************/
 
-/*_______________________________________ ( Add TODO button function ) _______________________________________*/ 
-function show_input_bar(){
+/*_______________________________________ ( Add TODO button function ) _______________________________________*/
+function show_input_bar() {
   input_bar.style.display = "block";
-  search_bar.style.display="none";
+  search_bar.style.display = "none";
 }
 
-/*_______________________________________ ( search TODO button function ) ____________________________________*/ 
-function show_search_bar(){
+/*_______________________________________ ( search TODO button function ) ____________________________________*/
+function show_search_bar() {
   input_bar.style.display = "none";
-  search_bar.style.display="block";
-  // search_type.style.display='block';
-  // submit_btn.style.display='block'
-
-  // search_btn[0].style.display='none'
-  // search_bar_due_date.style.display='none'
-  // search_bar_id.style.display='none'
-  // search_bar_catagory.style.display='none'
-
+  search_bar.style.display = "block";
+  search_block_update()
 }
 
 //*_______________________________________ ( add_todo functin ) ______________________________________________*/
@@ -104,17 +94,16 @@ function show_search_bar(){
 function add_todo() {
   var login_user = localStorage.getItem("eml");
   var input_bar_tod_text = document.getElementById("input_bar_tod_text");
-  var due_date = document.getElementById("due_date")
-  var input_bar_catagory = document.getElementById("input_bar_catagory")
+  var due_date = document.getElementById("due_date");
+  var input_bar_catagory = document.getElementById("input_bar_catagory");
   console.log(input_bar_catagory.value);
-  var d = new Date();//getting current(today date)
-  var task_due_date = new Date(due_date.value); //to gate user selected date which is going to be use as a due date 
-  
-  var remaining_days = task_due_date - d;// getting difference in due date and current date
-  var remaining_days = Math.floor(remaining_days/1000/60/60/24); //calculating how many days are remaining in due date
+  var d = new Date(); //getting current(today date)
+  var task_due_date = new Date(due_date.value); //to gate user selected date which is going to be use as a due date
+
+  var remaining_days = task_due_date - d; // getting difference in due date and current date
+  var remaining_days = Math.floor(remaining_days / 1000 / 60 / 60 / 24); //calculating how many days are remaining in due date
 
   if (input_bar_tod_text.value && due_date.value && input_bar_catagory.value) {
-   
     var dayy = [
       "Sunday",
       "Monday",
@@ -128,12 +117,12 @@ function add_todo() {
     var object = {
       checkBox: false,
       id: login_user,
-      catagory : input_bar_catagory.value, 
+      catagory: input_bar_catagory.value,
       work: input_bar_tod_text.value,
-      due_date :due_date.value,
-      reminder : remaining_days,
+      due_date: due_date.value,
+      reminder: remaining_days,
       day: dayy[d.getDay()],
-      date: `${d.getDate()} - ${d.getMonth()+1}- ${d.getFullYear()}`,
+      date: `${d.getDate()} - ${d.getMonth() + 1}- ${d.getFullYear()}`,
     };
     console.log(object);
     var local_storage_array = localStorage.getItem("local_storage_array"); //geting arry from local storage
@@ -167,8 +156,6 @@ function add_todo() {
     alert("must fill all fields(todo text, due date, catagory)");
   }
 
-  
-
   displaytodolist(); //jub user todo bna la ga tub yea unko list ma display kry ga
 }
 
@@ -185,31 +172,34 @@ function displaytodolist() {
       //***************( display all data b/c admin is login)*****************
       if (login_user == "admin@gmail.com" && data.id == "admin@gmail.com") {
         var li = `<li class="unchecked_style"> 
-        <input type="checkbox" class="box" onclick="checkboox_check(this)" ${data.checkBox} >
-        <span style="color: "> ${data.work} <hr> ${data.id} </span>
-        <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-        <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>   
-        <span> <button onclick = "del(${index})" class="del_button"> Delete </button> </span> 
+        <span> ${index+1} </span>
+        <span> ${data.work} <hr> ${data.id} </span>
+        <span> Catagory <hr> ${data.catagory}</span>
+        <span> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>   
+        <span> <button onclick = "del(${index})" class="del_button"> <i class="fa-solid fa-trash-can"></i> </button> </span> 
          </li>`;
         todo_display_list.innerHTML += li;
       } else if (
-        login_user == "admin@gmail.com" &&  data.id != "admin@gmail.com") {
+        login_user == "admin@gmail.com" &&
+        data.id != "admin@gmail.com"
+      ) {
         var li = `<li class="unchecked_style">  
+        <span> ${index+1} </span>
           <span> ${data.work} <hr> ${data.id} </span>
-           <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-            <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>    
+           <span> Catagory <hr> ${data.catagory}</span>
+            <span> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>    
            </li> `;
         todo_display_list.innerHTML += li;
       }
 
       //***************(display current user data only)************************
       if (login_user === data.id && login_user != "admin@gmail.com") {
-        var li = `<li class="unchecked_style " >  
-        <input type="checkbox"  class="box" onclick="checkboox_check(this)" >
+        var li = `<li class="unchecked_style " >
+        <span> ${index+1} </span>  
         <span>${data.work} </span> 
-        <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-        <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>      
-        <span> <button onclick = "del(${index})" del_button> Delete </button> </span>  
+        <span> Catagory <hr> ${data.catagory}</span>
+        <span> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>      
+        <span> <button onclick = "del(${index})" del_button> <i class="fa-solid fa-trash-can"></i> </button> </span>  
          </li> `;
         todo_display_list.innerHTML += li;
       }
@@ -250,120 +240,197 @@ function del(objectIndexNo) {
 
 displaytodolist();
 
-
-function checkboox_check(ele){
- 
-    if (ele.checked === true) {
-      ele.parentElement.classList = "checkbox_style";
-      ele.parentElement.children[3].style.display = "none";
-    } else if (ele.checked === false) {
-      ele.parentElement.classList = "unchecked_style";
-      ele.parentElement.children[3].style.display = "block";
-    }
+function checkboox_check(ele) {
+  if (ele.checked === true) {
+    ele.parentElement.classList = "checkbox_style";
+    ele.parentElement.children[3].style.display = "none";
+  } else if (ele.checked === false) {
+    ele.parentElement.classList = "unchecked_style";
+    ele.parentElement.children[3].style.display = "block";
   }
-
-
-//  select catagory funtion...
-// function select_search_option(){
-  
-// console.log(search_type.value);
-
-//   if(search_type.value == 'email' ){  
-//    search_bar_id.style.display='block'
-//    search_btn[0].style.display='block'
-//     search_type.style.display='none'
-//     submit_btn.style.display='none'}
-
-//     else if(search_type.value == 'due__date' ){  
-//       search_bar_due_date.style.display='block'
-//       search_btn[0].style.display='block'
-//        search_type.style.display='none'
-//        submit_btn.style.display='none'}
-
-//     else if(search_type.value == 'catagoryy' ){  
-//       search_bar_catagory.style.display='block'
-//         search_btn[0].style.display='block'
-//          search_type.style.display='none'
-//          submit_btn.style.display='none'}
-//     else{     
-//     alert("select catagory")
-//     }
-//         search_type.value = "";
-// }
-
-  function search_by_catagory() {
-
-var search_bar_catagory = document.getElementById("search_bar_catagory")
-var arrayFromstorage = localStorage.getItem("local_storage_array"); //geting arry from local storage
-  var array_from_storage_parse = JSON.parse(arrayFromstorage);
-// var search_item=[];
-
-if( search_bar_catagory.value){
-var search_item = array_from_storage_parse.filter((data,index)=>data.catagory === search_bar_catagory.value)
-console.log(search_item);
-
-
-todo_display_list.innerHTML = "";
-
-search_item.forEach(function(data,index){
-var li = `<li class="unchecked_style"> 
-
-<span style="color: "> ${data.work} <hr> ${data.id} </span>
-<span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-<span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>   
-
- </li>`;
-todo_display_list.innerHTML += li;
-})
 }
 
 
+// jub user search type select kry ga to yea function run hoga
+search_type_dropdown.addEventListener("click", function () {
+search_block_update()
+})
 
-if( search_bar_catagory.value){
-
-  var search_item = array_from_storage_parse.filter((data,index)=>data.catagory === search_bar_catagory.value)
-  console.log(search_item);
+  function search_block_update(){
+    
+var login_user = localStorage.getItem("eml");
+var search_type_dropdown = document.getElementById("search_type_dropdown");
+var search_bar_center_div = document.getElementById("search_bar_center_div");
+var search_bar_input_feild = document.getElementById("search_bar_input_feild");
+var searching_element_catagory = document.getElementById("searching_element_catagory");
   
-  
-  todo_display_list.innerHTML = "";
-  
-  search_item.forEach(function(data,index){
-    var login_user = localStorage.getItem("eml");
+  if (login_user !== "admin@gmail.com") {
+    search_type_dropdown.children[1].style.display = "none";
 
-    if (login_user == "admin@gmail.com" && data.id == "admin@gmail.com") {
-      var li = `<li class="unchecked_style"> 
-      
-      <span style="color: "> ${data.work} <hr> ${data.id} </span>
-      <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-      <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>   
+    if (search_type_dropdown.value == "due__date") {
+      searching_element_catagory.style.display = "none";
+      search_bar_input_feild.style.display = "block";
+      search_bar_input_feild.setAttribute("type", "date");
+    }
+     else if (search_type_dropdown.value == "catagoryy") {
+      searching_element_catagory.style.display = "block";
+      search_bar_input_feild.style.display = "none";
+      // search_bar_input_feild.setAttribute('type', 'date')
+    } 
+    else {
+    }
+  } 
+  else if (login_user === "admin@gmail.com") {
+    search_type_dropdown.children[1].style.display = "block";
 
-       </li>`;
-      todo_display_list.innerHTML += li;
-    } else if (
-      login_user == "admin@gmail.com" &&  data.id != "admin@gmail.com") {
-      var li = `<li class="unchecked_style">  
-        <span> ${data.work} <hr> ${data.id} </span>
-         <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-          <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>    
-         </li> `;
-      todo_display_list.innerHTML += li;
+    if (search_type_dropdown.value == "email") {
+      searching_element_catagory.style.display = "none";
+      search_bar_input_feild.style.display = "block";
+      search_bar_input_feild.setAttribute("type", "email");
     }
 
-    if (login_user === data.id && login_user != "admin@gmail.com") {
-      var li = `<li class="unchecked_style " >  
-      <span>${data.work} </span> 
-      <span style="font-size:15px"> Catagory <hr> ${data.catagory}</span>
-      <span style="font-size:15px"> Due date : ${data.due_date} <hr> ${data.reminder} days left</span>      
-      <span> <button onclick = "del(${index})" del_button> Delete </button> </span>  
-       </li> `;
-      todo_display_list.innerHTML += li;
+    if (search_type_dropdown.value == "due__date") {
+      searching_element_catagory.style.display = "none";
+      search_bar_input_feild.style.display = "block";
+      search_bar_input_feild.setAttribute("type", "date");
+    } 
+    else if (search_type_dropdown.value == "catagoryy") {
+      searching_element_catagory.style.display = "block";
+      search_bar_input_feild.style.display = "none";
     }
-
-  })
+     else {
+    }
+  } 
+  
+  else {
   }
-else{ alert("fill both field (todo text and catagory)")}
 
-search_bar_tod_text.value = "";
-search_bar_catagory.value = "";
+}
+
+
+function search_by_catagory() {
+  var login_user = localStorage.getItem("eml");
+  var arrayFromstorage = localStorage.getItem("local_storage_array"); //geting arry from local storage
+  var array_from_storage_parse = JSON.parse(arrayFromstorage);
+  console.log(login_user);
+
+  // when user search with email(this option is avilable for admin only)
+  if (search_type_dropdown.value == "email"){
+
+       var search_item_by_email = array_from_storage_parse.filter(
+      (data, index) => data.id === search_bar_input_feild.value );
+      //  console.log(search_item_by_email);
+      
+       todo_display_list.innerHTML = "";
+
+       search_item_by_email.forEach(function(data,index){
+
+       var dueDate_till_today = calculating_remaing_days_in_due_date(data.due_date)
+
+       var li = `<li class="unchecked_style">
+        <span> ${index+1} </span>
+        <span> ${data.work} <hr> ${data.id} </span>
+        <span> Catagory <hr> ${data.catagory}</span>
+        <span> 
+        Due date : ${data.due_date} <hr> ${dueDate_till_today} </span>
+        </li>`;
+        todo_display_list.innerHTML += li;})
+      }
+  
+  // when user search with due date (this option is avilable for all user)
+
+     if (search_type_dropdown.value == "due__date" ) {
+    console.log("search_item_by_duedate");
+
+        if(login_user != 'admin@gmail.com'){
+        var search_item_by_duedate = array_from_storage_parse.filter(
+          (data, index)=>data.due_date == search_bar_input_feild.value && data.id == login_user);
+          console.log(search_item_by_duedate);
+        }
+
+        if(login_user == 'admin@gmail.com'){
+          var search_item_by_duedate = array_from_storage_parse.filter(
+            (data, index)=>data.due_date == search_bar_input_feild.value);
+            console.log(search_item_by_duedate);
+          }
+      todo_display_list.innerHTML = "";
+
+       search_item_by_duedate.forEach(function(data,index){
+
+       var dueDate_till_today = calculating_remaing_days_in_due_date(data.due_date)
+
+       var li = `<li class="unchecked_style">
+        <span> ${index+1} </span>
+        <span> ${data.work} <hr> ${data.id} </span>
+        <span> Catagory <hr> ${data.catagory}</span>
+        <span> Due date : ${data.due_date} <hr> ${dueDate_till_today} </span>
+
+        </li>`;
+        todo_display_list.innerHTML += li;})
+
+  } 
+
+  // when user search with catagory (this option is avilable for all user)
+
+  if (search_type_dropdown.value == "catagoryy" ) {
+
+  if(login_user != 'admin@gmail.com'){
+    var search_item_by_catagory = array_from_storage_parse.filter(
+      (data, index)=>data.catagory == searching_element_catagory.value && data.id == login_user);
+      console.log(search_item_by_catagory);
+    }
+
+    if(login_user == 'admin@gmail.com'){
+      var search_item_by_catagory = array_from_storage_parse.filter(
+        (data, index)=>data.catagory == searching_element_catagory.value);
+        console.log(search_item_by_catagory);
+      }
+  todo_display_list.innerHTML = "";
+
+   search_item_by_catagory.forEach(function(data,index){
+
+    var dueDate_till_today = calculating_remaing_days_in_due_date(data.due_date)
+
+   var li = `<li class="unchecked_style">
+    <span> ${index+1} </span>
+    <span> ${data.work} <hr> ${data.id} </span>
+    <span> Catagory <hr> ${data.catagory}</span>
+    <span> Due date : ${data.due_date} <hr> ${dueDate_till_today}</span>
+    </li>`;
+    todo_display_list.innerHTML += li;})
+} 
+
+if (search_type_dropdown.value == "display_all" ) {
+  displaytodolist()
+}
+  searching_element_catagory.value="";
+  search_bar_input_feild.value = "";
+
+    // ____________________________ Return Function calculating remaing days in due date__________________________
+    function   calculating_remaing_days_in_due_date(dateee)
+    {
+      console.log(dateee);
+      var new_remainder = new Date(dateee)
+
+      var today_date = new Date();
+      
+     new_remainder = new_remainder - today_date;
+     var new_remainder = Math.floor(new_remainder / 1000 / 60 / 60 / 24); 
+     console.log(new_remainder);
+
+     if(new_remainder > 0){
+      var remaining_days_till_today = new_remainder +" days left"
+      return remaining_days_till_today;
+     }
+     else if (new_remainder == -1 && today_date.getHours()<24){ 
+      var remaining_days_till_today = "Last day"
+      return remaining_days_till_today;
+     }
+     else if (new_remainder < 0){ 
+      var remaining_days_till_today = "Due date has passed"
+      return remaining_days_till_today;
+     }
+    }
+      // _________________ End of return Function to calculating remaing days in due date_____________________
 
 }

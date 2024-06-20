@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- css code -->
+<style>
+.search_bar{
+    width: 70%;
+    padding: 20px;
+    border: 2px solid brown;
+    display: flex;
+    justify-content: space-between;
+}
+select,div{ 
+    border: 2px solid brown;
+    width: 40%;
+}
+#js_dropdown{
+    width: 100%;
+}
+
+input{
+    width: 100%;
+}
+
+</style>
+
+<body>
+
+    <!-- html code  -->
+
+    <div class="search_bar">
+    <select name="" id="select_searching_type">
+        <option value="" disabled selected>select searching type</option>
+        <option value="email"> Search by email</option>
+        <option value="duedate"> Search by Due Date</option>
+        <option value="catagory"> Search by catagory</option>
+    </select>
+
+
+    <div id="dropdown_to_display_catagory_option">
+        <input type="text" id="input_feild" disabled="true">
+        <!-- there is mor more element which is going to be appen in j.s on whene user select catagory option -->
+    </div>
+
+    <button onclick="filter_data()">Submit</button>
+</div>
+
+    <!-- java script file -->
+    <script>
+
+        var select_searching_type = document.getElementById('select_searching_type')
+        var dropdown_to_display_catagory_option = document.getElementById('dropdown_to_display_catagory_option')
+        var input_feild = document.getElementById('input_feild')
+        var js_dropdown = document.getElementById('js_dropdown')
+// calling an event on change in value of select search type drope down 
+        select_searching_type.addEventListener('change', function () {
+
+            console.log(select_searching_type.value);
+
+            if (select_searching_type.value == 'duedate') {
+                js_dropdown.style.display='none'
+                input_feild.style.display='block'
+                input_feild.setAttribute('type', 'date')
+                console.log();
+                input_feild.disabled = false
+
+            }
+
+            else if (select_searching_type.value == 'email') {
+                js_dropdown.style.display='none'
+                input_feild.style.display='block'
+                input_feild.setAttribute('type', 'email')
+                input_feild.placeholder = 'email';
+            }
+
+            else if (select_searching_type.value == 'catagory') {
+
+                var catagory_list = document.createElement('select')
+                catagory_list.id = 'js_dropdown'
+
+                var option1 = document.createElement('option')
+                option1.value = 'exam';
+                option1.text = 'Exam'
+
+                var option2 = document.createElement('option')
+                option2.value = 'work';
+                option2.text = 'Work'
+
+                catagory_list.appendChild(option1)
+                catagory_list.appendChild(option2)
+
+                input_feild.style.display = 'none'
+                dropdown_to_display_catagory_option.appendChild(catagory_list)
+
+
+                input_feild.setAttribute('type', 'checkbox')
+            }
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

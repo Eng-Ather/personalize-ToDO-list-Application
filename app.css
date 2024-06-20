@@ -102,7 +102,7 @@ h1 {
     border-bottom: 2px;
     border-style: solid;
     border-color: white;
-    /* border:2px solid rgb(51, 231, 31);  */
+    /* border:2px solid rgb(224, 231, 31);  */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,13 +119,22 @@ h1 {
     justify-content: space-between;
 }
 
+.todo_block>div>span {
+    width: 100%;
+    /* border: 2px solid rgb(251, 143, 61); */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between; 
+}
+
 /* ****************************************(input bar styling)******************************* */
 
 #input_bar{
     display: none;
 }
 #input_bar_tod_text {
-    width: 50%;
+    width: 49.5%;
     height: 50px;
     color: white;
     text-shadow: -3px 1px 4px blue;
@@ -172,13 +181,10 @@ h1 {
 /* ****************************************(Search bar styling)******************************* */
 #search_bar{
     display: none;
-    /* border: 2px solid brown; */
-    /* display: flex; */
-    /* flex-direction: row; */
 }
 
-#search_type{
-    width: 50%;
+#search_type_dropdown{
+    width: 30%;
     height: 50px;
     color: white;
     text-shadow: -3px 1px 4px blue;
@@ -188,8 +194,21 @@ h1 {
     text-align: center;
 }
 
-#search_bar_id {
-    width: 49%;
+#search_bar_center_div{
+    width: 38%;
+    height: 50px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 15px;
+    background: rgba(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#searching_element_catagory{
+    width: 100%;
     height: 50px;
     color: white;
     text-shadow: -3px 1px 4px blue;
@@ -198,7 +217,18 @@ h1 {
     backdrop-filter: blur(10px);
     text-align: center;
     display: none;
+}
 
+#search_bar_input_feild{
+    width: 100%;
+    height: 50px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 15px;
+    background: rgba(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: none;
 }
 
 #search_bar_due_date{
@@ -225,20 +255,9 @@ h1 {
     /* display: none; */
 
 }
-#submit_btn{
-    width: 24%;
-    height: 50px;
-    padding: 13px;
-    /* font-weight: bold; */
-    color: white;
-    text-shadow: -3px 1px 4px blue;
-    background: rgba(225, 225, 225, 0.2);
-    backdrop-filter: blur(10px);
-    /* border-color: white; */
-}
 
 .search_btn {
-    width: 24%;
+    width: 30%;
     height: 50px;
     padding: 13px;
     /* font-weight: bold; */
@@ -249,6 +268,12 @@ h1 {
     /* border-color: white; */
     /* display: none; */
 
+}
+
+.search_btn:hover {
+    border: 2px solid black;
+    box-shadow: -3px 1px 4px rgba(120, 237, 120, 0.6);;
+    cursor: pointer;
 }
 
 option {
@@ -273,8 +298,7 @@ option {
 
 .btn:hover {
     border: 2px solid black;
-    box-shadow: -3px 1px 4px rgba(120, 237, 120, 0.6);
-    ;
+    box-shadow: -3px 1px 4px rgba(120, 237, 120, 0.6);;
     cursor: pointer;
 }
 
@@ -286,11 +310,11 @@ ul {
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 0px auto;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow; */
 }
 
 .unchecked_style {
@@ -401,7 +425,7 @@ span>button:hover {
 
     #todo {
         border: 2px solid rgb(121, 42, 42);
-        width: 98%;
+        width: 100%;
         margin: 0px auto;
         display: flex;
         justify-content: space-between;
@@ -411,23 +435,23 @@ span>button:hover {
 
 
     .del_button {
-        background-color: transparent;
+        /* background-color: transparent; */
         /* border-color: white; */
-        color: white;
+        /* color: white; */
         border: none;
         text-shadow: -3px 1px 4px blue;
         /* background: rgba(120, 237, 120, 0.2); */
-        backdrop-filter: blur(10px);
-        padding: 5px;
+        /* backdrop-filter: blur(10px); */
+        padding: 2px;
         font-size: 10px;
     }
 
     .btn {
-        width: 18%;
-        height: 45px;
-        padding: 10px;
+        width: 49%;
+        height: 25px;
+        padding: 5px;
         /* font-weight: bold; */
-        font-size: 12px;
+        font-size: 10px;
         color: white;
         text-shadow: -3px 1px 4px blue;
         background: rgba(225, 225, 225, 0.2);
@@ -438,42 +462,198 @@ span>button:hover {
     .btn:hover {
         border: 2px solid black;
         box-shadow: -3px 1px 4px rgba(120, 237, 120, 0.6);
-        ;
         cursor: pointer;
-    }
-
-    #tod_text {
-        width: 80%;
-        padding: 10px;
-        border-color: white;
-        color: white;
-        text-shadow: -3px 1px 4px blue;
-        font-size: 12px;
-        background: rgba(225, 225, 225, 0.2);
-        backdrop-filter: blur(10px);
-        font-size: 20px;
-        margin-top: 7px;
-        margin-bottom: 10px;
     }
 
     .unchecked_style {
         width: 100%;
         padding-left: 10px;
-        font-size: 15px;
+        font-size: 10px;
         margin: 2px;
         padding: 10px;
     }
-
+/* 
     .checkbox_style {
         width: 100%;
         padding-left: 10px;
-        font-size: 15px;
+        font-size: 10px;
         margin: 2px;
         padding: 10px;
+    } */
+
+    #input_bar_tod_text {
+        width: 30%;
+        height: 25px;
+        color: white;
+        text-shadow: -3px 1px 4px blue;
+        font-size: 10px;
+        background: rgba(225, 225, 225, 0.2);
+        backdrop-filter: blur(10px);
+        text-align: center;
     }
+    
+    #input_bar_catagory {
+        width: 25%;
+        height: 25px;
+        text-align: center;
+        color: white;
+        text-shadow: -3px 1px 4px blue;
+        font-size: 10px;
+        background: rgba(225, 225, 225, 0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    #due_date {
+        width: 20%;
+        height: 25px;
+        text-align: center;
+        color: white;
+        text-shadow: -3px 1px 4px blue;
+        font-size: 10px;
+        background: rgba(225, 225, 225, 0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .save_btn {
+        width: 20%;
+        height: 25px;
+        padding: 3px;
+        font-size: 10px;
+        /* font-weight: bold; */
+        color: white;
+        text-shadow: -3px 1px 4px blue;
+        background: rgba(225, 225, 225, 0.2);
+        backdrop-filter: blur(10px);
+        /* border-color: white; */
+    }
+    
+
+#search_type_dropdown{
+    width: 30%;
+    height: 25px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+#search_bar_center_div{
+    width: 38%;
+    height: 25px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#searching_element_catagory{
+    width: 100%;
+    height: 25px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: none;
+}
+
+#search_bar_input_feild{
+    width: 100%;
+    height: 25px;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    display: none;
+}
+
+#search_bar_due_date{
+    width: 18.7%;
+    height: 25px;
+    text-align: center;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+#search_bar_catagory {
+    width: 75%;
+    height: 25px;
+    text-align: center;
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    font-size: 10px;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    /* display: none; */
 
 }
 
+.search_btn {
+    width: 30%;
+    height: 25px;
+    padding: 3px;
+    font-size: 10px;
+    /* font-weight: bold; */
+    color: white;
+    text-shadow: -3px 1px 4px blue;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    /* border-color: white; */
+    /* display: none; */
+
+}
+
+.search_btn:hover {
+    border: 2px solid black;
+    box-shadow: -3px 1px 4px rgba(120, 237, 120, 0.6);;
+    cursor: pointer;
+}
+
+option {
+    text-align: center;
+    color: rgb(84, 84, 247);
+    font-size: 10px;
+}
+
+
+.logout_btn {
+    width: 100%;
+    color: white;
+    border-color: white;
+    text-shadow: -3px 1px 4px blue;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    font-size: 12px;
+    letter-spacing: 30px;
+}
+
+.logout_btn:hover,
+span>button:hover {
+    border-color: black;
+    box-shadow: -3px 3px 4px rgba(120, 237, 120, 0.6);
+    cursor: pointer;
+}
+
+
+}
 
 @media only screen and (max-width: 350px) {
 
@@ -488,6 +668,18 @@ span>button:hover {
 
     .parent>button {
         padding-right: 10px;
+    }
+    ul {
+        width: 100%;
+        max-height: 65vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin: 0px auto;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center;
+        justify-content: space-between; */
+        /* border: 2px solid yellow; */
     }
 
 
