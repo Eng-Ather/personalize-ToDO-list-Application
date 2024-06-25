@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="app.css">
+
+    <!-- for fontawsom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <h1 id="title">Personalize TODO List Application</h1>
+
+    <!-- login box -->
+    <div class="parent" id="login_box">
+        <input class="parent_button" type="email" id="email" placeholder="abc@gmail.com" required>
+        <input class="parent_button" type="password" id="password" required placeholder="enter password">
+        <button class="parent_button" type="button" onclick="sumbit()">Login</button>
+    </div>
+
+    <!-- 2nd main div whis is display when ever user get login -->
+    <div id="todo">
+
+        <!-- 1st child of 2nd main div to display i/p bar, search bar and there option -->
+        <div class="todo_block">
+
+            <!--  button box (ADD TODO & Search TODO button)  -->
+            <span>
+                <button class="btn" id="input_bar_button" onclick="show_input_bar()">Add TODO</button>
+                <button class="btn" id="search_bar_button" onclick="show_search_bar()">Search TODO</button>
+            </span>
+
+            <!-- input bar to ADD TODO -->
+             <div style="width: 100%;">
+            <span id="input_bar">
+                <input type="text" placeholder="todo text" id="input_bar_tod_text" maxlength="30">
+                <input type="date" placeholder="Due date" id="due_date">
+
+                <!-- input bar child to add catagory of TODO -->
+                <select id="input_bar_catagory">
+                    <option value="" disabled selected> Select catagory</option>
+                    <option value="Home Work "> Home Work </option>
+                    <option value="Exams"> Exams </option>
+                    <option value="Project"> Project </option>
+                    <option value="Activities"> Activities</option>
+                    <option value="Personal"> Personal</option>
+                </select>
+
+                <!-- add button -->
+                <button class="save_btn" onclick="add_todo()">Save</button>
+
+            </span>
+            </div>
+
+            <!--  search bar span start here -->
+            <span id="search_bar">
+
+                <div style="display: flex; justify-content: space-between;">
+                    
+                    <!-- search bar dropdown to autharize search type-->
+                    <select id="search_type_dropdown">
+                        <option value="" disabled selected>Select Search Type</option>
+                        <option value="email">email</option>
+                        <option value="due__date"> date </option>
+                        <option value="catagoryy">catagory </option>
+                        <option value="display_all">display all</option>
+                    </select>
+
+                    <!-- sibling of dropdown to to provied option for date and email and catagory -->
+                    <div id='search_bar_center_div'>
+
+                    <!-- take input in form of email and date -->
+                        <input type="email" placeholder="enter email here" id="search_bar_input_feild">
+
+                    <!-- take input in form of dropdown option -->
+                        <select id="searching_element_catagory">
+                            <option value="" disabled selected placeholder="Select catagory"> Select catagory</option>
+                            <option value="Home Work "> Home Work </option>
+                            <option value="Exams"> Exams </option>
+                            <option value="Project"> Project </option>
+                            <option value="Activities"> Activities</option>
+                            <option value="Personal"> Personal</option>
+                        </select>
+                    </div>
+                    
+                    <!-- search bar button to filter data-->
+                    <button class="search_btn" onclick="search_by_catagory()">Search</button>
+                </div>
+            </span>
+
+        </div>
+
+        <!-- ADD TODO display here -->
+        <ul id="todo_display_list">Todo display list</ul>
+
+        <!-- logout button -->
+        <button class="logout_btn" type="button" onclick="logout()">Logout</button>
+
+    </div>
+
+    <!-- javascript file link -->
+    <script src="app.js"></script>
+</body>
+
+</html>
