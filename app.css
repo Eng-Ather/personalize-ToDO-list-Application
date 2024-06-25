@@ -424,7 +424,7 @@ span>button:hover {
     }
 
     #todo {
-        border: 2px solid rgb(121, 42, 42);
+        /* border: 2px solid rgb(121, 42, 42); */
         width: 100%;
         margin: 0px auto;
         display: flex;
